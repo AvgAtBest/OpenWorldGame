@@ -18,12 +18,17 @@ public class Seek : SteeringBehaviours
     {
         //Create a value to return later
         Vector3 force = Vector3.zero;
+        float distance = Vector3.Distance(owner.transform.position, owner.target.position);
         //Modify value here
-        if (owner.hasTarget)
+        if(distance > stoppingDistance)
         {
-            //Get direction to target from ai agent
-            force += owner.target.position - owner.transform.position;
+            if (owner.hasTarget)
+            {
+                //Get direction to target from ai agent
+                force += owner.target.position - owner.transform.position;
+            }
         }
+
         //Return value
         return force.normalized;
     }

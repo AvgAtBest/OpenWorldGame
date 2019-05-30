@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using NaughtyAttributes;
-[System.Serializable]
+
 public abstract class SteeringBehaviours : ScriptableObject
 {
     [Slider(0f, 1f)] public float weighting = 1f;

@@ -9,10 +9,9 @@ public class AI : MonoBehaviour
     [ShowIf("hasTarget")] public Transform target;
     public float maxVelocity = 15f;
     public float maxDistance = 10f;
-    public SteeringBehaviours[] behaviours;
-
-    protected NavMeshAgent agent;
-    private Vector3 velocity;
+    [Expandable] public SteeringBehaviours[] behaviours;
+    public NavMeshAgent agent;
+    protected Vector3 velocity;
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();

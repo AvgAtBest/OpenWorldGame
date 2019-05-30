@@ -10,19 +10,23 @@ public class Flee : SteeringBehaviours
     public override void OnDrawGizmosSelected(AI owner)
     {
         Gizmos.color = Color.red;
-        float distance = Vector3.Distance(owner.target.position, owner.transform.position);
-        Gizmos.DrawWireSphere(owner.target.position, distance - stoppingDistance);
+        Gizmos.DrawWireSphere(owner.target.position, stoppingDistance);
     }
     public override Vector3 GetForce(AI owner)
     {
         //Create a value to return later
         Vector3 force = Vector3.zero;
-        //Modify value here
-        if (owner.hasTarget)
+        float distance = Vector3.Distance(owner.transform.position, owner.target.position);
+        if(distance < stoppingDistance)
         {
-            //Get direction from ai agent to target
-            force += owner.transform.position - owner.target.position;
+            //Modify value here
+            if (owner.hasTarget)
+            {
+                //Get direction from ai agent to target
+                force += owner.transform.position - owner.target.position;
+            }
         }
+
         //Return value
         return force.normalized;
     }
